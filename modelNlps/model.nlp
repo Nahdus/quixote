@@ -1,0 +1,187 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "fullSearchWhenGuessed": false,
+    "useNlg": true,
+    "useNeural": true,
+    "useLRC": true
+  },
+  "languages": [
+    "en"
+  ],
+  "intentDomains": {
+    "greeting": "default"
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {}
+  },
+  "slotManager": {},
+  "classifiers": [
+    {
+      "language": "en",
+      "docs": [
+        {
+          "intent": "greeting",
+          "utterance": [
+            "how",
+            "are",
+            "you"
+          ]
+        },
+        {
+          "intent": "greeting",
+          "utterance": [
+            "how",
+            "is",
+            "life"
+          ]
+        },
+        {
+          "intent": "greeting",
+          "utterance": [
+            "what",
+            "up"
+          ]
+        }
+      ],
+      "features": {
+        "how": 2,
+        "are": 1,
+        "you": 1,
+        "is": 1,
+        "life": 1,
+        "what": 1,
+        "up": 1
+      },
+      "logistic": {
+        "observations": {
+          "greeting": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              5,
+              6
+            ]
+          ]
+        },
+        "labels": [
+          "greeting"
+        ],
+        "observationCount": 3,
+        "theta": [
+          {
+            "elements": [
+              1.5731159014615073,
+              0.7865579507307536,
+              0.7865579507307536,
+              0.7865579507307536,
+              0.7865579507307536,
+              1.1790116277433427,
+              1.1790116277433427
+            ]
+          }
+        ]
+      },
+      "useLRC": true,
+      "useNeural": true,
+      "neuralClassifier": {
+        "settings": {
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "learningRate": 0.1,
+            "errorThresh": 0.0005,
+            "timeout": 120000
+          }
+        },
+        "classifierMap": {
+          "greeting": {
+            "sizes": [
+              7,
+              1
+            ],
+            "layers": [
+              {
+                "how": {},
+                "are": {},
+                "you": {},
+                "is": {},
+                "life": {},
+                "what": {},
+                "up": {}
+              },
+              {
+                "0": {
+                  "bias": 46.6856689453125,
+                  "weights": {
+                    "how": 26.98245620727539,
+                    "are": 13.52354621887207,
+                    "you": 13.592230796813965,
+                    "is": 13.678121566772461,
+                    "life": 13.391891479492188,
+                    "what": 24.837940216064453,
+                    "up": 24.771915435791016
+                  }
+                }
+              }
+            ],
+            "outputLookup": false,
+            "inputLookup": true,
+            "activation": "leaky-relu",
+            "trainOpts": {
+              "iterations": 20000,
+              "errorThresh": 0.0005,
+              "log": false,
+              "logPeriod": 10,
+              "learningRate": 0.1,
+              "momentum": 0.1,
+              "callbackPeriod": 10,
+              "timeout": 120000,
+              "beta1": 0.9,
+              "beta2": 0.999,
+              "epsilon": 1e-8
+            }
+          }
+        }
+      }
+    }
+  ],
+  "responses": {
+    "en": {
+      "greeting": [
+        {
+          "response": "hi"
+        },
+        {
+          "response": "hello"
+        }
+      ]
+    }
+  }
+}

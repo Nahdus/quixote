@@ -1,0 +1,223 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "fullSearchWhenGuessed": false,
+    "useNlg": true,
+    "useNeural": true,
+    "useLRC": true
+  },
+  "languages": [
+    "en"
+  ],
+  "intentDomains": {
+    "gabbymusically": "default",
+    "musically": "default"
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {}
+  },
+  "slotManager": {},
+  "classifiers": [
+    {
+      "language": "en",
+      "docs": [
+        {
+          "intent": "gabbymusically",
+          "utterance": [
+            "what",
+            "are",
+            "you",
+            "hobbi"
+          ]
+        },
+        {
+          "intent": "gabbymusically",
+          "utterance": [
+            "ani",
+            "activ",
+            "you",
+            "enjoy"
+          ]
+        },
+        {
+          "intent": "gabbymusically",
+          "utterance": [
+            "let",
+            "talk",
+            "about",
+            "your",
+            "hobbi"
+          ]
+        }
+      ],
+      "features": {
+        "what": 1,
+        "are": 1,
+        "you": 2,
+        "hobbi": 2,
+        "ani": 1,
+        "activ": 1,
+        "enjoy": 1,
+        "let": 1,
+        "talk": 1,
+        "about": 1,
+        "your": 1
+      },
+      "logistic": {
+        "observations": {
+          "gabbymusically": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              4,
+              5,
+              6
+            ],
+            [
+              3,
+              7,
+              8,
+              9,
+              10
+            ]
+          ]
+        },
+        "labels": [
+          "gabbymusically"
+        ],
+        "observationCount": 3,
+        "theta": [
+          {
+            "elements": [
+              0.6388311046712415,
+              0.6388311046712415,
+              1.3560292278821084,
+              1.282317766145439,
+              0.7171981232108672,
+              0.7171981232108672,
+              0.7171981232108672,
+              0.6434866614741978,
+              0.6434866614741978,
+              0.6434866614741978,
+              0.6434866614741978
+            ]
+          }
+        ]
+      },
+      "useLRC": true,
+      "useNeural": true,
+      "neuralClassifier": {
+        "settings": {
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "learningRate": 0.1,
+            "errorThresh": 0.0005,
+            "timeout": 120000
+          }
+        },
+        "classifierMap": {
+          "gabbymusically": {
+            "sizes": [
+              11,
+              1
+            ],
+            "layers": [
+              {
+                "what": {},
+                "are": {},
+                "you": {},
+                "hobbi": {},
+                "ani": {},
+                "activ": {},
+                "enjoy": {},
+                "let": {},
+                "talk": {},
+                "about": {},
+                "your": {}
+              },
+              {
+                "0": {
+                  "bias": 31.958881378173828,
+                  "weights": {
+                    "what": 10.749232292175293,
+                    "are": 10.874979972839355,
+                    "you": 24.386445999145508,
+                    "hobbi": 22.051116943359375,
+                    "ani": 13.239450454711914,
+                    "activ": 13.388968467712402,
+                    "enjoy": 13.407755851745605,
+                    "let": 11.30650806427002,
+                    "talk": 11.13520336151123,
+                    "about": 11.17297077178955,
+                    "your": 11.265853881835938
+                  }
+                }
+              }
+            ],
+            "outputLookup": false,
+            "inputLookup": true,
+            "activation": "leaky-relu",
+            "trainOpts": {
+              "iterations": 20000,
+              "errorThresh": 0.0005,
+              "log": false,
+              "logPeriod": 10,
+              "learningRate": 0.1,
+              "momentum": 0.1,
+              "callbackPeriod": 10,
+              "timeout": 120000,
+              "beta1": 0.9,
+              "beta2": 0.999,
+              "epsilon": 1e-8
+            }
+          }
+        }
+      }
+    }
+  ],
+  "responses": {
+    "en": {
+      "gabbymusically": [
+        {
+          "response": "i enjoy fishing"
+        },
+        {
+          "response": "i go fishing"
+        }
+      ],
+      "musically": [
+        {
+          "response": "i enjoy fishing"
+        },
+        {
+          "response": "i go fishing"
+        }
+      ]
+    }
+  }
+}
