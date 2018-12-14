@@ -12,7 +12,6 @@
     "en"
   ],
   "intentDomains": {
-    "gabbymusically": "default",
     "musically": "default"
   },
   "nerManager": {
@@ -42,7 +41,7 @@
       "language": "en",
       "docs": [
         {
-          "intent": "gabbymusically",
+          "intent": "musically",
           "utterance": [
             "what",
             "are",
@@ -51,7 +50,7 @@
           ]
         },
         {
-          "intent": "gabbymusically",
+          "intent": "musically",
           "utterance": [
             "ani",
             "activ",
@@ -60,7 +59,7 @@
           ]
         },
         {
-          "intent": "gabbymusically",
+          "intent": "musically",
           "utterance": [
             "let",
             "talk",
@@ -85,7 +84,7 @@
       },
       "logistic": {
         "observations": {
-          "gabbymusically": [
+          "musically": [
             [
               1,
               2,
@@ -107,7 +106,7 @@
           ]
         },
         "labels": [
-          "gabbymusically"
+          "musically"
         ],
         "observationCount": 3,
         "theta": [
@@ -141,7 +140,7 @@
           }
         },
         "classifierMap": {
-          "gabbymusically": {
+          "musically": {
             "sizes": [
               11,
               1
@@ -162,19 +161,19 @@
               },
               {
                 "0": {
-                  "bias": 31.958881378173828,
+                  "bias": 31.847557067871094,
                   "weights": {
-                    "what": 10.749232292175293,
-                    "are": 10.874979972839355,
-                    "you": 24.386445999145508,
-                    "hobbi": 22.051116943359375,
-                    "ani": 13.239450454711914,
-                    "activ": 13.388968467712402,
-                    "enjoy": 13.407755851745605,
-                    "let": 11.30650806427002,
-                    "talk": 11.13520336151123,
-                    "about": 11.17297077178955,
-                    "your": 11.265853881835938
+                    "what": 10.751371383666992,
+                    "are": 10.815185546875,
+                    "you": 24.3038330078125,
+                    "hobbi": 22.09576988220215,
+                    "ani": 13.513554573059082,
+                    "activ": 13.297679901123047,
+                    "enjoy": 13.519126892089844,
+                    "let": 11.189410209655762,
+                    "talk": 11.351414680480957,
+                    "about": 11.245857238769531,
+                    "your": 11.237924575805664
                   }
                 }
               }
@@ -202,14 +201,6 @@
   ],
   "responses": {
     "en": {
-      "gabbymusically": [
-        {
-          "response": "i enjoy fishing"
-        },
-        {
-          "response": "i go fishing"
-        }
-      ],
       "musically": [
         {
           "response": "i enjoy fishing"
