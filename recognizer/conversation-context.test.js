@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const { ConversationContext } = require('../../lib');
+const { ConversationContext } = require('node-nlp');
 
 describe('Conversation Context', () => {
   describe('Constructor', () => {
