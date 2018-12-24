@@ -12,7 +12,7 @@
     "en"
   ],
   "intentDomains": {
-    "musically": "default"
+    "intro": "default"
   },
   "nerManager": {
     "settings": {},
@@ -41,88 +41,81 @@
       "language": "en",
       "docs": [
         {
-          "intent": "musically",
+          "intent": "intro",
           "utterance": [
-            "what",
+            "hello"
+          ]
+        },
+        {
+          "intent": "intro",
+          "utterance": [
+            "hi"
+          ]
+        },
+        {
+          "intent": "intro",
+          "utterance": [
+            "how",
             "are",
-            "you",
-            "hobbi"
+            "you"
           ]
         },
         {
-          "intent": "musically",
+          "intent": "intro",
           "utterance": [
-            "ani",
-            "activ",
-            "you",
-            "enjoy"
+            "howdi"
           ]
         },
         {
-          "intent": "musically",
+          "intent": "intro",
           "utterance": [
-            "let",
-            "talk",
-            "about",
-            "your",
-            "hobbi"
+            "wassup"
           ]
         }
       ],
       "features": {
-        "what": 1,
+        "hello": 1,
+        "hi": 1,
+        "how": 1,
         "are": 1,
-        "you": 2,
-        "hobbi": 2,
-        "ani": 1,
-        "activ": 1,
-        "enjoy": 1,
-        "let": 1,
-        "talk": 1,
-        "about": 1,
-        "your": 1
+        "you": 1,
+        "howdi": 1,
+        "wassup": 1
       },
       "logistic": {
         "observations": {
-          "musically": [
+          "intro": [
+            [],
             [
-              1,
-              2,
-              3
+              1
             ],
             [
               2,
-              4,
-              5,
-              6
-            ],
-            [
               3,
-              7,
-              8,
-              9,
-              10
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
             ]
           ]
         },
         "labels": [
-          "musically"
+          "intro"
         ],
-        "observationCount": 3,
+        "observationCount": 5,
         "theta": [
           {
             "elements": [
-              0.6388311046712415,
-              0.6388311046712415,
-              1.3560292278821084,
-              1.282317766145439,
-              0.7171981232108672,
-              0.7171981232108672,
-              0.7171981232108672,
-              0.6434866614741978,
-              0.6434866614741978,
-              0.6434866614741978,
-              0.6434866614741978
+              0.9134443102820953,
+              0.9134443102820953,
+              0.596737934742601,
+              0.596737934742601,
+              0.596737934742601,
+              0.9134443102820953,
+              0.9134443102820953
             ]
           }
         ]
@@ -140,40 +133,32 @@
           }
         },
         "classifierMap": {
-          "musically": {
+          "intro": {
             "sizes": [
-              11,
+              7,
               1
             ],
             "layers": [
               {
-                "what": {},
+                "hello": {},
+                "hi": {},
+                "how": {},
                 "are": {},
                 "you": {},
-                "hobbi": {},
-                "ani": {},
-                "activ": {},
-                "enjoy": {},
-                "let": {},
-                "talk": {},
-                "about": {},
-                "your": {}
+                "howdi": {},
+                "wassup": {}
               },
               {
                 "0": {
-                  "bias": 31.847557067871094,
+                  "bias": 78.4500961303711,
                   "weights": {
-                    "what": 10.751371383666992,
-                    "are": 10.815185546875,
-                    "you": 24.3038330078125,
-                    "hobbi": 22.09576988220215,
-                    "ani": 13.513554573059082,
-                    "activ": 13.297679901123047,
-                    "enjoy": 13.519126892089844,
-                    "let": 11.189410209655762,
-                    "talk": 11.351414680480957,
-                    "about": 11.245857238769531,
-                    "your": 11.237924575805664
+                    "hello": 19.68478775024414,
+                    "hi": 19.715471267700195,
+                    "how": 8.439291954040527,
+                    "are": 8.265324592590332,
+                    "you": 8.240934371948242,
+                    "howdi": 19.842182159423828,
+                    "wassup": 19.726654052734375
                   }
                 }
               }
@@ -201,12 +186,21 @@
   ],
   "responses": {
     "en": {
-      "musically": [
+      "intro": [
         {
-          "response": "i enjoy fishing"
+          "response": "Hello"
         },
         {
-          "response": "i go fishing"
+          "response": "Hi"
+        },
+        {
+          "response": "How are you"
+        },
+        {
+          "response": "howdy"
+        },
+        {
+          "response": "wassup"
         }
       ]
     }

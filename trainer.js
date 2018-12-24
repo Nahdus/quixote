@@ -25,9 +25,6 @@ const train =   (intentname,utterances,responses,fileName)=>{
         })
     }
 
-
-
-
 module.exports={
     'train':train
 }

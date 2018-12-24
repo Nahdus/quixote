@@ -9,15 +9,6 @@ manager.addDocument('en', 'I have to go', 'greeting.bye');
 manager.addAnswer('en', 'greeting.hello', 'Hey there!');
 manager.addAnswer('en', 'greeting.bye', 'Till next time, {{name}}!');
 
-
-manager.addNamedEntityText(
-  'name',
-  'Jhon',
-  ['en'],
-  ['john', 'John'], 
-  );
-
-
 manager.train()
   .then(async result => {
     r = await manager.process('en', 'Hello my name is John', context)

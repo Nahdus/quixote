@@ -26,8 +26,8 @@ const respond=(phrase,fileName,threshold)=>{
 
      return manager.process(phrase).then(
          data=>new Promise(resolve=>{
-             console.log(data)
-             console.log(data.score)
+            //  console.log(data)
+            //  console.log(data.score)
              if (data.score>threshold && data.answer){
                 resolve(data)
              }else{
