@@ -2,7 +2,7 @@ const { NlpManager } = require('node-nlp');
 const { SentimentAnalyzer } = require('node-nlp');
 var fs = require('fs')
 
-const manager = new NlpManager({ languages: ['en'] });
+const manager = new NlpManager({ languages: ['en'],fullSearchWhenGuessed:true });
 
 
 
@@ -13,7 +13,8 @@ const respond=(phrase,fileName,threshold)=>{
         manager.load(fileName)
     }else{
         
-        return new Promise(async resolve=>{
+        return new Promise(
+            async resolve=>{
             const sentiment = new SentimentAnalyzer({ language: 'en' });  
             const score=await sentiment.getSentiment(phrase)
             resolve(
@@ -24,10 +25,12 @@ const respond=(phrase,fileName,threshold)=>{
     })
 }
 
-     return manager.process(phrase).then(
+     return manager.process('en',phrase).then(
          data=>new Promise(resolve=>{
-            //  console.log(data)
-            //  console.log(data.score)
+            console.log(data.score)
+            console.log(threshold)
+            console.log(data)
+            debugger
              if (data.score>threshold && data.answer){
                 resolve(data)
              }else{

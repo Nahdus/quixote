@@ -1,16 +1,18 @@
 const { NlpManager } = require('node-nlp');
-var fs = require('fs')
+const fs = require('fs')
+const to =require('./to').to
 
 const manager = new NlpManager({ languages: ['en'] });
 
 
 const train =   (intentname,utterances,responses,fileName)=>{
     //manager.load(fileName).then().catch()
-    return new Promise( async resolve=>{
+    return new Promise( async (resolve,reject)=>{
     const exist=fs.existsSync(fileName)
-    console.log(exist)
+    
     if (exist){
         manager.load(fileName)
+    
     }
     utterances.forEach(item=> {
         manager.addDocument('en', item, intentname)
@@ -18,10 +20,21 @@ const train =   (intentname,utterances,responses,fileName)=>{
     responses.forEach(item=> {
         manager.addAnswer('en',intentname,item)
         })
-    await manager.train() 
-    manager.save(fileName,fileName)
+        try{
+            await to(manager.train())
+        }catch(e){
+            reject(e)
+        }
+         
+    
+    try{
+        manager.save(fileName,fileName)
+    }catch(e){
+        reject(e)
+        }
+    
     // const test=manager.export(false)
-    resolve()
+    resolve('success')
         })
     }
 

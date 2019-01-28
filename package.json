@@ -4,11 +4,13 @@
   "description": "a powerful nlp botting engine built on top of node-nlp",
   "main": "trainer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
     "node-nlp": "^2.3.0"
   }
 }
