@@ -8,6 +8,9 @@ const manager = new NlpManager({ languages: ['en'],fullSearchWhenGuessed:true })
 
 
 const respond=(phrase,fileName,threshold)=>{
+    if (fileName===undefined){
+        return new Promise((_,reject)=>reject('please provide file name'))
+    }
     const exist=fs.existsSync(fileName)
     if (exist){
         manager.load(fileName)
@@ -27,14 +30,16 @@ const respond=(phrase,fileName,threshold)=>{
 
      return manager.process('en',phrase).then(
          data=>new Promise(resolve=>{
-            console.log(data.score)
-            console.log(threshold)
-            console.log(data)
+            
             debugger
              if (data.score>threshold && data.answer){
+                //  console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+                //  console.log(data)
                 resolve(data)
              }else{
-                resolve(data.answer="sorry didnt understand") 
+                data.srcAnswer=JSON.stringify({'msg':'intentNone'})
+                resolve(data) 
+                
              }
         }
     )

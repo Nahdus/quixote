@@ -1,6 +1,0 @@
-{
-    "intro":{
-    "nextIntent":"greet",
-    "extract":"email"
-    }
-}

@@ -5,7 +5,7 @@ const to =require('./to').to
 const manager = new NlpManager({ languages: ['en'] });
 
 
-const train =   (intentname,utterances,responses,fileName)=>{
+const train =   (intentname,utterances,response,fileName)=>{
     //manager.load(fileName).then().catch()
     return new Promise( async (resolve,reject)=>{
     const exist=fs.existsSync(fileName)
@@ -17,9 +17,13 @@ const train =   (intentname,utterances,responses,fileName)=>{
     utterances.forEach(item=> {
         manager.addDocument('en', item, intentname)
         })
-    responses.forEach(item=> {
-        manager.addAnswer('en',intentname,item)
-        })
+    response.forEach((response)=>{
+        // console.log('responseeeeeeeeeeeeeeeeeeeeeeeeeeee')
+        // console.log(response)
+        manager.addAnswer('en',intentname,JSON.stringify(response))
+    })
+        
+        
         try{
             await to(manager.train())
         }catch(e){
