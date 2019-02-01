@@ -3,15 +3,14 @@ const {tainingFunction,nlpfile}=require('../TrainingData3')
 var assert = require('assert');
 const fs = require('fs')
 
-describe('advanced test to expect answer for trained phrases', ()=>{
+describe('file: usecaseTest.js advanced test to expect answer for trained phrases', ()=>{
     before(
-         ()=>{
-             tainingFunction()
+         async ()=>{
+             await tainingFunction()
         }
-        
-      )
-    after(()=> {
-        fs.unlink('./'+nlpfile,(err)=>{
+    )
+    after(async ()=> {
+        await fs.unlink('./'+nlpfile,(err)=>{
             if(err){console.log(err)}
             
         })
@@ -19,17 +18,28 @@ describe('advanced test to expect answer for trained phrases', ()=>{
     
     it('it should return intro intent response',
     async ()=>{
-        let response = await chatter('Hello','testBot.nlp','0.9');
+        let response = await chatter('Hello',nlpfile,'0.9');
         let responseList=["Hi, how may i help you?",'Hello, how may I help you']
-        assert.notEqual(responseList[response],-1)
+        assert.notEqual(responseList.indexOf(response),-1)
         
     })
     it('it should return planExpiry intent response',
     async ()=>{
-        let response = await chatter('need your help finding my mobile plan expiry date','testBot.nlp','0.9');
+        let response = await chatter('need your help finding my mobile plan expiry date',nlpfile,'0.9');
         let responseList=["sure type your phone number"]
-        assert.notEqual(responseList[response],-1)
+        assert.notEqual(responseList.indexOf(response),-1)
         
     })
-    
+    it('accepts phone number',
+    async ()=>{
+        let response = await chatter('7598677634',nlpfile,'0.9');
+        let responseList=["sure type your phone number"]
+        assert.notEqual(responseList.indexOf(response),-1)
+    })
+    it('talk test',
+    async ()=>{
+        let response = await chatter('7544422634',nlpfile,'0.9');
+        let responseList=["sure type your phone number"]
+        assert.notEqual(responseList.indexOf(response),-1)
+    })
 })

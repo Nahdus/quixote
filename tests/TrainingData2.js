@@ -1,5 +1,5 @@
 const  {train} = require('../trainer');
-const fileName="testLayeredServiceBot.nlp"
+const fileName="testLayeredServiceBot2.nlp"
 
 const tainingFunction = async () =>{
     await train("intro",//IntentName

@@ -1,7 +1,7 @@
 const  {train} = require('../trainer');
-const fileName="testLayeredServiceBot.nlp"
+const fileName="testLayeredServiceBot1.nlp"
 const tainingFunction = async () =>{
-    await train("intro",//IntentName
+    await train("greet",//IntentName
  ["Hello","Hi","How are you","howdy","wassup"],//utterances
  [{"text":["Hi happy to see you today"]}],//responses
  fileName//fileName

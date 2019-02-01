@@ -33,8 +33,6 @@ const respond=(phrase,fileName,threshold)=>{
             
             debugger
              if (data.score>threshold && data.answer){
-                //  console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
-                //  console.log(data)
                 resolve(data)
              }else{
                 data.srcAnswer=JSON.stringify({'msg':'intentNone'})

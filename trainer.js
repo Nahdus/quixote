@@ -18,8 +18,6 @@ const train =   (intentname,utterances,response,fileName)=>{
         manager.addDocument('en', item, intentname)
         })
     response.forEach((response)=>{
-        // console.log('responseeeeeeeeeeeeeeeeeeeeeeeeeeee')
-        // console.log(response)
         manager.addAnswer('en',intentname,JSON.stringify(response))
     })
         
@@ -36,8 +34,6 @@ const train =   (intentname,utterances,response,fileName)=>{
     }catch(e){
         reject(e)
         }
-    
-    // const test=manager.export(false)
     resolve('success')
         })
     }

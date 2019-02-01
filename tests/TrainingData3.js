@@ -1,12 +1,12 @@
 const  {train} = require('../trainer');
-const fileName="testLayeredServiceBot.nlp"
+const fileName="testLayeredServiceBot3.nlp"
 
 const tainingFunction = async () =>{
-    await train("greet",//IntentName
+    await train("intro",//IntentName
         ["Hi","Hello","hey","good morning","good evening"],//utterances
         [
             {
-                "texts":["Hi, how may i help you?",'Hello, how may I help you']
+                "text":["Hi, how may i help you?",'Hello, how may I help you']
                 }
         ],//responses
         fileName//fileName
@@ -18,8 +18,8 @@ const tainingFunction = async () =>{
         "last date of expiration of my number"],//utterances
         [
             {
-            "betsssssssssssssssssssssss":"phoneNumber",
-            "texts":["sure type your phone number"]
+            "get":"phoneNumber",
+            "text":["sure type your phone number"]
             }
             ],//responses
             fileName//fileName
@@ -30,13 +30,15 @@ const tainingFunction = async () =>{
         "how much balance is left in my account",
         "what is my account balance"],//utterances
         [
-            {"betsssssssssssssssssssssss":"phoneNumber",
+            {"get":"phoneNumber",
             "text":["dasd sure please type your phone number"]
             }
         ],//responses
         fileName//fileName
         )
 }
+
+tainingFunction()
 module.exports={
     tainingFunction,
     "nlpfile":fileName
