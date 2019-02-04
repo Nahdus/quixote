@@ -25,7 +25,7 @@ describe('file: usecaseTest.js advanced test to expect answer for trained phrase
     })
     it('it should return planExpiry intent response',
     async ()=>{
-        let response = await chatter('need your help finding my mobile plan expiry date',nlpfile,'0.9');
+        let response = await chatter('when is my service scheme expiring',nlpfile,'0.9');
         let responseList=["sure type your phone number"]
         assert.notEqual(responseList.indexOf(response),-1)
         
@@ -33,13 +33,9 @@ describe('file: usecaseTest.js advanced test to expect answer for trained phrase
     it('accepts phone number',
     async ()=>{
         let response = await chatter('7598677634',nlpfile,'0.9');
-        let responseList=["sure type your phone number"]
+        console.log(response)
+        let responseList=["Thanks for confirming"]
         assert.notEqual(responseList.indexOf(response),-1)
     })
-    it('talk test',
-    async ()=>{
-        let response = await chatter('7544422634',nlpfile,'0.9');
-        let responseList=["sure type your phone number"]
-        assert.notEqual(responseList.indexOf(response),-1)
-    })
+    
 })

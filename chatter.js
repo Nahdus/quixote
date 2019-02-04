@@ -17,7 +17,7 @@ return respond(phrase,fileName,threshold).then(data=>
                     if((JSON.parse(data.srcAnswer)).hasOwnProperty("get")){
                         state.task=(JSON.parse(data.srcAnswer)).get
                     }
-                    
+                    console.log('Inside identifyIntent')
                     return new Promise((resolve)=>resolve((JSON.parse(data.srcAnswer).text)[chooseRand]))
                 }else if(data.intent==='intentNone'){
                     return new Promise((resolve)=>resolve(null))
@@ -32,12 +32,18 @@ return respond(phrase,fileName,threshold).then(data=>
                     data.entities.forEach(element => {
                     
                     if(element.entity==="phonenumber"){
-                        //console.log(element.resolution)
                         memory.phoneNumber=element.resolution.value
                     }
                     
                 })}
-                return "sure type your phone number"
+                console.log('Inside phoneNumber')
+                console.log( JSON.parse(data.srcAnswer).text)
+                if(memory.hasOwnProperty('phoneNumber')){
+                    return JSON.parse(data.srcAnswer).text[0]
+                }else{
+                    return data.ifGotNot
+                }
+                
             default:
                 return new Promise((resolve)=>resolve(null))
           }

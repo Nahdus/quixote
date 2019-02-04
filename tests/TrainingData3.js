@@ -5,7 +5,7 @@ const tainingFunction = async () =>{
     await train("intro",//IntentName
         ["Hi","Hello","hey","good morning","good evening"],//utterances
         [
-            {
+            {   "get":"identifyIntent",
                 "text":["Hi, how may i help you?",'Hello, how may I help you']
                 }
         ],//responses
@@ -31,7 +31,19 @@ const tainingFunction = async () =>{
         "what is my account balance"],//utterances
         [
             {"get":"phoneNumber",
-            "text":["dasd sure please type your phone number"]
+            "text":["sure please type your phone number"],
+            "ifGotNot":["is __phoneNumber__ your phone number?","I couldnt get your phone nummber could you type again?"],
+            "thenText":[""]
+            }
+        ],//responses
+        fileName//fileName
+        )
+        await train("phonenumberintent",//IntentName
+        ["phone number"],//utterances
+        [
+            {
+            "text":["Thanks for confirming"],
+            
             }
         ],//responses
         fileName//fileName
