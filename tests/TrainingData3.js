@@ -19,8 +19,10 @@ const tainingFunction = async () =>{
         [
             {
             "get":"phoneNumber",
-            "text":["sure type your phone number"]
-            }
+            "text":["sure please type your phone number"],
+            "action":{"ifGot":["Thanks for confirming"],
+            "ifGotNot":["I couldnt get your phone nummber could you type again?"],
+            }}
             ],//responses
             fileName//fileName
         )
@@ -32,8 +34,7 @@ const tainingFunction = async () =>{
         [
             {"get":"phoneNumber",
             "text":["sure please type your phone number"],
-            "ifGotNot":["is __phoneNumber__ your phone number?","I couldnt get your phone nummber could you type again?"],
-            "thenText":[""]
+            
             }
         ],//responses
         fileName//fileName
@@ -42,7 +43,9 @@ const tainingFunction = async () =>{
         ["phone number"],//utterances
         [
             {
-            "text":["Thanks for confirming"],
+                "get":"identifyIntent",
+            
+            
             
             }
         ],//responses
