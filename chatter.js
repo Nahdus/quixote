@@ -1,18 +1,21 @@
+const postit = require('./post/post')
 const {respond} = require('./response')
 state={
     "task":"identifyIntent"
 }
-actions={}
+action={}
 memory={}
 
 const chooseRand=(list)=>Math.round(Math.random()*((list.length)-1))
 const chatter=(phrase,fileName,threshold)=>{
     
 return respond(phrase,fileName,threshold).then(data=>
+    
     {
+        
         switch(state.task) {
             case "identifyIntent":
-                if((JSON.parse(data.srcAnswer).hasOwnProperty('text'))){
+            if((JSON.parse(data.srcAnswer).hasOwnProperty('text'))){
                     
                     
                     
@@ -35,7 +38,7 @@ return respond(phrase,fileName,threshold).then(data=>
              
             case "phoneNumber":
                 
-                //memory.phoneNumber=phrase
+                
                 if(data.entities.length>0)
                 {
                     data.entities.forEach(element => {
@@ -49,16 +52,29 @@ return respond(phrase,fileName,threshold).then(data=>
                 
                
                 if(memory.hasOwnProperty('phoneNumber')){
-                    
-                    //console.log(memory.phoneNumber)
-                    return action.ifGot[chooseRand(action.ifGot)]
+                    state.task=action.ifGot.get
+                    let response =undefined
+                    let post = undefined
+                    if (action.ifGot.hasOwnProperty('text')){
+                        response = new Promise((resolve)=>resolve(action.ifGot.text[chooseRand(action.ifGot.text)]))
+                    }
+                    if(action.ifGot.hasOwnProperty('post')){
+                        const body={}
+                        body[action.ifGot.post.key]=memory.phoneNumber
+                        // console.log('hehe',response)
+                        post = postit(action.ifGot.post.url,body)
+                        //console.log(post.then(data=>data))
+                    }
+                    return Promise.all([response,post])
                 }else{
+                    state.task=action.ifGotNot.get
                     //console.log(action.ifGotNot)
-                    return action.ifGotNot[chooseRand(action.ifGotNot)]
+                    return new Promise((resolve)=>resolve(action.ifGotNot.text[chooseRand(action.ifGotNot.text)]))
                 }
+                
             case "email":
                 
-                //memory.phoneNumber=phrase
+                let response = undefined
                 if(data.entities.length>0)
                 {
                     data.entities.forEach(element => {
@@ -72,12 +88,16 @@ return respond(phrase,fileName,threshold).then(data=>
                 
                
                 if(memory.hasOwnProperty('email')){
+                    if (action.ifGot.hasOwnProperty('text')){
+                        
+                     return new Promise((resolve)=>resolve(action.ifGot.text[chooseRand(action.ifGot.text)]))
+                    }
                     
-                    console.log(memory.email)
-                    return action.ifGot[chooseRand(action.ifGot)]
                 }else{
-                    console.log(data.ifGotNot)
-                    return action.ifGotNot[chooseRand(action.ifGotNot)]
+                    if (action.ifGotNot.hasOwnProperty('text')){
+                        return new Promise((resolve)=>resolve(action.ifGotNot.text[chooseRand(action.ifGotNot.text)]))
+                    }
+                    
                 }
                 
                 

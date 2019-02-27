@@ -12,7 +12,7 @@ const tainingFunction = async () =>{
         fileName//fileName
         )
     await train("planExpiry",//IntentName
-        ["When is my paln expiring",
+        ["When is my plan expiring",
         "when is my service scheme expiring",
         "when is expiration date of my plan",
         "last date of expiration of my number"],//utterances
