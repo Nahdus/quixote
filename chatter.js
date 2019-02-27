@@ -5,19 +5,21 @@ state={
 }
 action={}
 memory={}
-
+const defaultResponse="sorry I couldn't understand"
 const chooseRand=(list)=>Math.round(Math.random()*((list.length)-1))
 const chatter=(phrase,fileName,threshold)=>{
     
 return respond(phrase,fileName,threshold).then(data=>
     
     {
-        
+        console.log(state.task)
         switch(state.task) {
+            
             case "identifyIntent":
+
             if((JSON.parse(data.srcAnswer).hasOwnProperty('text'))){
                     
-                    
+                console.log('has text')
                     
                     if((JSON.parse(data.srcAnswer)).hasOwnProperty("get")){
                         state.task=(JSON.parse(data.srcAnswer)).get
@@ -29,9 +31,12 @@ return respond(phrase,fileName,threshold).then(data=>
                     
                     
                     return new Promise((resolve)=>resolve((JSON.parse(data.srcAnswer).text)[chooseRand(JSON.parse(data.srcAnswer).text)]))
-                }else if(data.intent==='intentNone'){
-                    
-                    return new Promise((resolve)=>resolve(null))
+                }else if(data.intent==='None'){
+                    console.log('Intent not identified')
+                    return new Promise((resolve)=>resolve(defaultResponse))
+                }else{
+                    console.log('unexpected Intent')
+                    console.log(data.intent)
                 }
                 break;
                 
@@ -65,6 +70,7 @@ return respond(phrase,fileName,threshold).then(data=>
                         post = postit(action.ifGot.post.url,body)
                         //console.log(post.then(data=>data))
                     }
+                    memory={}
                     return Promise.all([response,post])
                 }else{
                     state.task=action.ifGotNot.get

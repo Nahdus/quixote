@@ -12,10 +12,10 @@ const tainingFunction = async () =>{
         fileName//fileName
         )
     await train("planExpiry",//IntentName
-        ["When is my paln expiring",
-        "when is my service scheme expiring",
-        "when is expiration date of my plan",
-        "last date of expiration of my number"],//utterances
+    ["what is my talk time balance",
+    "how much is my balance",
+    "how much balance is left in my account",
+    "what is my account balance"],//utterances
         [
             {
             "get":"phoneNumber",
@@ -43,16 +43,16 @@ const tainingFunction = async () =>{
         ],//responses
         fileName//fileName
         )
-        await train("phonenumberintent",//IntentName
-        ["phone number"],//utterances
-        [
-            {
-                "get":"identifyIntent",
+        // await train("phonenumberintent",//IntentName
+        // ["phone number"],//utterances
+        // [
+        //     {
+        //         "get":"identifyIntent",
 
-            }
-        ],//responses
-        fileName//fileName
-        )
+        //     }
+        // ],//responses
+        // fileName//fileName
+        // )
 }
 
 tainingFunction()

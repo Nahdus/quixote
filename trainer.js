@@ -1,6 +1,6 @@
 const { NlpManager } = require('node-nlp');
 const fs = require('fs')
-const to =require('./to').to
+const to =require('./to/to').to
 
 const manager = new NlpManager({ languages: ['en'] });
 

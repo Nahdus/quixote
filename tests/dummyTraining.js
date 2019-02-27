@@ -1,5 +1,5 @@
 
-const {train} = require('./trainer')
+const {train} = require('../trainer')
 
 const trainServiceBot=async ()=>{
 await train("greet",//IntentName
