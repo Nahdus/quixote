@@ -1,28 +1,32 @@
 const postit = require('./post/post')
 const {respond} = require('./response')
-state={
-    "task":"identifyIntent"
-}
-action={}
-memory={}
-const defaultResponse="sorry I couldn't understand"
-const chooseRand=(list)=>Math.round(Math.random()*((list.length)-1))
-const chatter=(phrase,fileName,threshold)=>{
-    
-return respond(phrase,fileName,threshold).then(data=>
+
+const chatter=()=>{
+
+    state={
+        "task":"identifyIntent"
+    }
+    action={}
+    memory={}
+    const defaultResponse="sorry I couldn't understand"
+    const chooseRand=(list)=>Math.round(Math.random()*((list.length)-1))
+    console.log(state.task)
+return {respond:(phrase,fileName,threshold)=>respond(phrase,fileName,threshold).then(data=>
     
     {
         console.log(state.task)
         switch(state.task) {
             
             case "identifyIntent":
-
+            console.log(data.srcAnswer)
             if((JSON.parse(data.srcAnswer).hasOwnProperty('text'))){
                     
                 console.log('has text')
                     
                     if((JSON.parse(data.srcAnswer)).hasOwnProperty("get")){
+                        
                         state.task=(JSON.parse(data.srcAnswer)).get
+                        
                     }
                     if((JSON.parse(data.srcAnswer)).hasOwnProperty("action")){
                         action={...(JSON.parse(data.srcAnswer)).action}
@@ -43,7 +47,7 @@ return respond(phrase,fileName,threshold).then(data=>
              
             case "phoneNumber":
                 
-                
+                console.log('Inside PhoneNumber intent')
                 if(data.entities.length>0)
                 {
                     data.entities.forEach(element => {
@@ -115,6 +119,6 @@ return respond(phrase,fileName,threshold).then(data=>
     }
     
     ).catch(err=>new Promise((_,reject)=>reject(err)))
-}
+}}
 
 module.exports={chatter}
