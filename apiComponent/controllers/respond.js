@@ -1,6 +1,6 @@
 
 const {chatter} = require('../../chatter')
-const bot =chatter()
+const bot =chatter("Sorry I couldnn't get you")
 exports.respond=async (req, res,next)=> {
    try{
 

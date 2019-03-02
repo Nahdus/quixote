@@ -1,27 +1,37 @@
 const postit = require('./post/post')
 const {respond} = require('./response')
 
-const chatter=()=>{
+/**
+ * @param  {string} defaultResponse response that needs to be returned not unknown intent
+ */
+const chatter=(defaultResponse)=>{
 
-    state={
+    const state={
         "task":"identifyIntent"
     }
-    action={}
-    memory={}
-    const defaultResponse="sorry I couldn't understand"
+    let action={}
+    let memory={}
+    let defRes=defaultResponse
+    
     const chooseRand=(list)=>Math.round(Math.random()*((list.length)-1))
-    console.log(state.task)
+    
+/**
+ * @param  {string} phrase
+ * @param  {string} fileName
+ * @param  {number} threshold number between 0 and 1 eg 1,0.9,0.7 Nlp confidence score
+ * falls below treshold it will return intentNone
+ 
+ */
 return {respond:(phrase,fileName,threshold)=>respond(phrase,fileName,threshold).then(data=>
     
     {
-        console.log(state.task)
+        
         switch(state.task) {
             
             case "identifyIntent":
-            console.log(data.srcAnswer)
             if((JSON.parse(data.srcAnswer).hasOwnProperty('text'))){
                     
-                console.log('has text')
+                
                     
                     if((JSON.parse(data.srcAnswer)).hasOwnProperty("get")){
                         
@@ -36,8 +46,14 @@ return {respond:(phrase,fileName,threshold)=>respond(phrase,fileName,threshold).
                     
                     return new Promise((resolve)=>resolve((JSON.parse(data.srcAnswer).text)[chooseRand(JSON.parse(data.srcAnswer).text)]))
                 }else if(data.intent==='None'){
-                    console.log('Intent not identified')
-                    return new Promise((resolve)=>resolve(defaultResponse))
+                    
+                    if(defRes!==undefined){
+
+                        return new Promise((resolve)=>resolve(defRes))
+                    }
+                    else{
+                        return null
+                    }
                 }else{
                     console.log('unexpected Intent')
                     console.log(data.intent)
@@ -47,7 +63,7 @@ return {respond:(phrase,fileName,threshold)=>respond(phrase,fileName,threshold).
              
             case "phoneNumber":
                 
-                console.log('Inside PhoneNumber intent')
+                
                 if(data.entities.length>0)
                 {
                     data.entities.forEach(element => {

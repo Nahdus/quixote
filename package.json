@@ -14,9 +14,11 @@
     "grunt": "^1.0.3",
     "mocha": "^5.2.0",
     "node-nlp": "^2.3.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
+    "expect": "^24.1.0",
     "grunt-run": "^0.8.1"
   }
 }

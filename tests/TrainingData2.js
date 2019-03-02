@@ -20,7 +20,7 @@ const tainingFunction = async () =>{
  fileName//fileName
  )
   }
-
+  tainingFunction()
 module.exports={
     tainingFunction,
     "nlpfile":fileName

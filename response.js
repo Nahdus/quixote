@@ -36,6 +36,7 @@ const respond=(phrase,fileName,threshold)=>{
                 resolve(data)
              }else{
                 data.srcAnswer=JSON.stringify({'msg':'intentNone'})
+                data.intent='None'
                 resolve(data) 
                 
              }

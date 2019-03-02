@@ -11,7 +11,7 @@ const tainingFunction = async () =>{
         ],//responses
         fileName//fileName
         )
-    await train("planExpiry",//IntentName
+    await train("accountBalance",//IntentName
     ["what is my talk time balance",
     "how much is my balance",
     "how much balance is left in my account",
@@ -30,19 +30,7 @@ const tainingFunction = async () =>{
             ],//responses
             fileName//fileName
         )
-    await train("accountBalance",//IntentName
-        ["what is my talk time balance",
-        "how much is my balance",
-        "how much balance is left in my account",
-        "what is my account balance"],//utterances
-        [
-            {"get":"phoneNumber",
-            "text":["sure please type your phone number"],
-            
-            }
-        ],//responses
-        fileName//fileName
-        )
+    
         // await train("phonenumberintent",//IntentName
         // ["phone number"],//utterances
         // [
@@ -55,7 +43,10 @@ const tainingFunction = async () =>{
         // )
 }
 
-tainingFunction()
+if (require.main === module) {
+    tainingFunction();
+}
+
 module.exports={
     tainingFunction,
     "nlpfile":fileName
