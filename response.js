@@ -31,7 +31,7 @@ const respond=(phrase,fileName,threshold)=>{
      return manager.process('en',phrase).then(
          data=>new Promise(resolve=>{
             
-            debugger
+            
              if (data.score>threshold && data.answer){
                 resolve(data)
              }else{

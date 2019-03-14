@@ -1,0 +1,387 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "fullSearchWhenGuessed": false,
+    "useNlg": true,
+    "useNeural": true,
+    "useLRC": true
+  },
+  "languages": [
+    "en"
+  ],
+  "intentDomains": {
+    "intro": "default",
+    "accountBalance": "default"
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {}
+  },
+  "slotManager": {},
+  "classifiers": [
+    {
+      "language": "en",
+      "docs": [
+        {
+          "intent": "intro",
+          "utterance": [
+            "hi"
+          ]
+        },
+        {
+          "intent": "intro",
+          "utterance": [
+            "hello"
+          ]
+        },
+        {
+          "intent": "intro",
+          "utterance": [
+            "hey"
+          ]
+        },
+        {
+          "intent": "intro",
+          "utterance": [
+            "good",
+            "morn"
+          ]
+        },
+        {
+          "intent": "intro",
+          "utterance": [
+            "good",
+            "even"
+          ]
+        },
+        {
+          "intent": "accountBalance",
+          "utterance": [
+            "what",
+            "is",
+            "my",
+            "talk",
+            "time",
+            "balanc"
+          ]
+        },
+        {
+          "intent": "accountBalance",
+          "utterance": [
+            "how",
+            "much",
+            "is",
+            "my",
+            "balanc"
+          ]
+        },
+        {
+          "intent": "accountBalance",
+          "utterance": [
+            "how",
+            "much",
+            "balanc",
+            "is",
+            "left",
+            "in",
+            "my",
+            "account"
+          ]
+        },
+        {
+          "intent": "accountBalance",
+          "utterance": [
+            "what",
+            "is",
+            "my",
+            "account",
+            "balanc"
+          ]
+        }
+      ],
+      "features": {
+        "hi": 1,
+        "hello": 1,
+        "hey": 1,
+        "good": 2,
+        "morn": 1,
+        "even": 1,
+        "what": 2,
+        "is": 4,
+        "my": 4,
+        "talk": 1,
+        "time": 1,
+        "balanc": 4,
+        "how": 2,
+        "much": 2,
+        "left": 1,
+        "in": 1,
+        "account": 2
+      },
+      "logistic": {
+        "observations": {
+          "intro": [
+            [],
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              5
+            ]
+          ],
+          "accountBalance": [
+            [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            [
+              7,
+              8,
+              11,
+              12,
+              13
+            ],
+            [
+              7,
+              8,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            [
+              6,
+              7,
+              8,
+              11,
+              16
+            ]
+          ]
+        },
+        "labels": [
+          "intro",
+          "accountBalance"
+        ],
+        "observationCount": 9,
+        "theta": [
+          {
+            "elements": [
+              1.2601910337483087,
+              1.2601910337483087,
+              1.2601910337483087,
+              1.473687635259637,
+              0.7368438176298185,
+              0.7368438176298185,
+              -1.1499444362276232,
+              -2.105266516548481,
+              -2.105266516548481,
+              -0.5559745665776842,
+              -0.5559745665776842,
+              -2.105266516548481,
+              -0.955322080320858,
+              -0.955322080320858,
+              -0.323893161651001,
+              -0.323893161651001,
+              -0.9178630313009404
+            ]
+          },
+          {
+            "elements": [
+              -1.2601910337483093,
+              -1.2601910337483093,
+              -1.2601910337483093,
+              -1.4736876352596366,
+              -0.7368438176298183,
+              -0.7368438176298183,
+              1.1499444362276248,
+              2.1052665165484825,
+              2.1052665165484825,
+              0.5559745665776843,
+              0.5559745665776843,
+              2.1052665165484825,
+              0.9553220803208583,
+              0.9553220803208583,
+              0.3238931616510013,
+              0.3238931616510013,
+              0.9178630313009403
+            ]
+          }
+        ]
+      },
+      "useLRC": true,
+      "useNeural": true,
+      "neuralClassifier": {
+        "settings": {
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "learningRate": 0.1,
+            "errorThresh": 0.0005,
+            "timeout": 60000
+          }
+        },
+        "classifierMap": {
+          "intro": {
+            "sizes": [
+              6,
+              1
+            ],
+            "layers": [
+              {
+                "hi": {},
+                "hello": {},
+                "hey": {},
+                "good": {},
+                "morn": {},
+                "even": {}
+              },
+              {
+                "0": {
+                  "bias": 2.4967026710510254,
+                  "weights": {
+                    "hi": 94.97178649902344,
+                    "hello": 94.96702575683594,
+                    "hey": 94.96226501464844,
+                    "good": 64.58150482177734,
+                    "morn": 32.40968704223633,
+                    "even": 32.4076042175293
+                  }
+                }
+              }
+            ],
+            "outputLookup": false,
+            "inputLookup": true,
+            "activation": "leaky-relu",
+            "trainOpts": {
+              "iterations": 20000,
+              "errorThresh": 0.0005,
+              "log": false,
+              "logPeriod": 10,
+              "learningRate": 0.1,
+              "momentum": 0.1,
+              "callbackPeriod": 10,
+              "timeout": 120000,
+              "beta1": 0.9,
+              "beta2": 0.999,
+              "epsilon": 1e-8
+            }
+          },
+          "accountBalance": {
+            "sizes": [
+              17,
+              1
+            ],
+            "layers": [
+              {
+                "hi": {},
+                "hello": {},
+                "hey": {},
+                "good": {},
+                "morn": {},
+                "even": {},
+                "what": {},
+                "is": {},
+                "my": {},
+                "talk": {},
+                "time": {},
+                "balanc": {},
+                "how": {},
+                "much": {},
+                "left": {},
+                "in": {},
+                "account": {}
+              },
+              {
+                "0": {
+                  "bias": 5.6288933753967285,
+                  "weights": {
+                    "hi": -4.2129106521606445,
+                    "hello": -4.2641825675964355,
+                    "hey": -4.117741584777832,
+                    "good": -4.428236961364746,
+                    "morn": -2.2525718212127686,
+                    "even": -2.3142354488372803,
+                    "what": 13.670742988586426,
+                    "is": 23.419265747070312,
+                    "my": 23.418123245239258,
+                    "talk": 5.891930103302002,
+                    "time": 5.649158000946045,
+                    "balanc": 23.630428314208984,
+                    "how": 9.943134307861328,
+                    "much": 9.584939956665039,
+                    "left": -0.017399020493030548,
+                    "in": -0.11236784607172012,
+                    "account": 8.057045936584473
+                  }
+                }
+              }
+            ],
+            "outputLookup": false,
+            "inputLookup": true,
+            "activation": "leaky-relu",
+            "trainOpts": {
+              "iterations": 20000,
+              "errorThresh": 0.0005,
+              "log": false,
+              "logPeriod": 10,
+              "learningRate": 0.1,
+              "momentum": 0.1,
+              "callbackPeriod": 10,
+              "timeout": 60000,
+              "beta1": 0.9,
+              "beta2": 0.999,
+              "epsilon": 1e-8
+            }
+          }
+        }
+      }
+    }
+  ],
+  "responses": {
+    "en": {
+      "intro": [
+        {
+          "response": "{\"get\":\"identifyIntent\",\"text\":[\"Hi, how may i help you?\",\"Hello, how may I help you\"]}"
+        }
+      ],
+      "accountBalance": [
+        {
+          "response": "{\"get\":\"phoneNumber\",\"text\":[\"sure please type your phone number\"],\"action\":{\"ifGot\":{\"text\":[\"Thanks for confirming\"],\"post\":{\"url\":\"http://localhost:1234/phonebalance/balance\",\"key\":\"phonenumber\"},\"get\":\"identifyIntent\"},\"ifGotNot\":{\"text\":[\"I couldnt get your phone nummber could you type again?\"],\"get\":\"phoneNumber\"}}}"
+        }
+      ]
+    }
+  }
+}

@@ -24,7 +24,7 @@ const tainingFunction = async () =>{
                        "post":{"url":"http://localhost:1234/phonebalance/balance","key":'phonenumber'} ,
                        "get":"identifyIntent"
                     },
-            "ifGotNot":{"text":["I couldnt get your phone nummber could you type again?"],
+            "ifGotNot":{"text":["I couldnt get your phone number could you type again?"],
                         "get":"phoneNumber"},
             }}
             ],//responses
