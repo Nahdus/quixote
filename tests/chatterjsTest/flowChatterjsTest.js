@@ -26,6 +26,8 @@ describe("file:basicChattertest.js", ()=>{
         bot=chatter('sorry')
         let response = await bot.respond('Hello',nlpfile,'0.9');
         let responseList=["Hi, how may i help you?",'Hello, how may I help you']
+        console.log('response',response)
+        console.log('responselist',responseList)
         expect(responseList).toContain(response)
         
     })

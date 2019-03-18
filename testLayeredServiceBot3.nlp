@@ -270,14 +270,14 @@
               },
               {
                 "0": {
-                  "bias": 2.4967026710510254,
+                  "bias": 2.5007498264312744,
                   "weights": {
-                    "hi": 94.97178649902344,
-                    "hello": 94.96702575683594,
-                    "hey": 94.96226501464844,
-                    "good": 64.58150482177734,
-                    "morn": 32.40968704223633,
-                    "even": 32.4076042175293
+                    "hi": 94.9638900756836,
+                    "hello": 94.95892333984375,
+                    "hey": 94.95394897460938,
+                    "good": 64.78955841064453,
+                    "morn": 32.196685791015625,
+                    "even": 32.19465637207031
                   }
                 }
               }
@@ -326,25 +326,25 @@
               },
               {
                 "0": {
-                  "bias": 5.6288933753967285,
+                  "bias": 5.772374629974365,
                   "weights": {
-                    "hi": -4.2129106521606445,
-                    "hello": -4.2641825675964355,
-                    "hey": -4.117741584777832,
-                    "good": -4.428236961364746,
-                    "morn": -2.2525718212127686,
-                    "even": -2.3142354488372803,
-                    "what": 13.670742988586426,
-                    "is": 23.419265747070312,
-                    "my": 23.418123245239258,
-                    "talk": 5.891930103302002,
-                    "time": 5.649158000946045,
-                    "balanc": 23.630428314208984,
-                    "how": 9.943134307861328,
-                    "much": 9.584939956665039,
-                    "left": -0.017399020493030548,
-                    "in": -0.11236784607172012,
-                    "account": 8.057045936584473
+                    "hi": -4.3747711181640625,
+                    "hello": -4.327081680297852,
+                    "hey": -4.340683937072754,
+                    "good": -4.6025519371032715,
+                    "morn": -2.2791099548339844,
+                    "even": -2.2456424236297607,
+                    "what": 13.71882438659668,
+                    "is": 23.41704750061035,
+                    "my": 23.467315673828125,
+                    "talk": 5.78172492980957,
+                    "time": 5.614740371704102,
+                    "balanc": 23.531614303588867,
+                    "how": 9.678211212158203,
+                    "much": 9.700104713439941,
+                    "left": 0.0033872888889163733,
+                    "in": 0.01158206444233656,
+                    "account": 7.979519844055176
                   }
                 }
               }
@@ -379,7 +379,7 @@
       ],
       "accountBalance": [
         {
-          "response": "{\"get\":\"phoneNumber\",\"text\":[\"sure please type your phone number\"],\"action\":{\"ifGot\":{\"text\":[\"Thanks for confirming\"],\"post\":{\"url\":\"http://localhost:1234/phonebalance/balance\",\"key\":\"phonenumber\"},\"get\":\"identifyIntent\"},\"ifGotNot\":{\"text\":[\"I couldnt get your phone nummber could you type again?\"],\"get\":\"phoneNumber\"}}}"
+          "response": "{\"get\":\"phoneNumber\",\"text\":[\"sure please type your phone number\"],\"action\":{\"ifGot\":{\"text\":[\"Thanks for confirming\"],\"post\":{\"url\":\"http://localhost:1234/phonebalance/balance\",\"key\":\"phonenumber\"},\"get\":\"identifyIntent\"},\"ifGotNot\":{\"text\":[\"I couldnt get your phone number could you type again?\"],\"get\":\"phoneNumber\"}}}"
         }
       ]
     }

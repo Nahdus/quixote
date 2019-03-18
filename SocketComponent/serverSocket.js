@@ -1,13 +1,15 @@
 const express = require('express')
 const app = express()
-const server = require('http').createServer(app)
+const bodyParser = require('body-parser')
+const server = require('http').createServer()
 const io = require('socket.io')(server)
 const {chatter} = require('../chatter')
-const bodyParser = require('body-parser')
+
+const connections=[]
 io.on('connection',(socket)=>{
     const bot=chatter("sorry I couldn't understand")
-    
-    //io.emit('response',"hello user")
+    connections.push(socket)
+    console.log('some one joined')
     socket.on('userTyped',(message)=>{
             console.log(message)
         bot.respond(message,"testLayeredServiceBot3.nlp",0.9)
@@ -18,18 +20,12 @@ io.on('connection',(socket)=>{
        
     
     })
-//    app.post('/test', async(req, res) =>{
-    
-//     bot.respond(req.body.query,"testLayeredServiceBot3.nlp",0.9)
-//     .then(data=>{
-//         console.log(data)
-//         io.emit('xyz',data)})
-//         .catch(err=>console.log(err))
-       
-//     console.log("Type",typeof data)
-//     res.send('Sent to all clients')
-//     res.end()
-// })
+    socket.on('disconnect',()=>{
+        const i=connections.indexOf(socket)
+        connections.splice(i,1)
+        console.log('We lost some one')
+    })
+
 
 })
 

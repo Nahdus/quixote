@@ -39,4 +39,10 @@ describe('file: responseIntentTest.js advanced test to expect answer for trained
         // console.log(nlpfile)
         assert.equal(response.intent,'None')
     })
+    it('it should return none intent',async()=>{
+        let response = await respond("my email id is b.j.ponsudhan@gmail.com ",nlpfile,'0.9')
+        console.log(response.entities[0].resolution)
+        console.log(response.entities[0].entity)
+        assert.equal('None','None')
+    })
 })

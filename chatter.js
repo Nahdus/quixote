@@ -2,7 +2,7 @@ const postit = require('./post/post')
 const {respond} = require('./response')
 
 /**
- * @param  {string} defaultResponse response that needs to be returned not unknown intent
+ *@param  {string} defaultResponse response that needs to be returned not unknown intent
  */
 const chatter=(defaultResponse)=>{
 
@@ -18,7 +18,8 @@ const chatter=(defaultResponse)=>{
 /**
  * @param  {string} phrase
  * @param  {string} fileName
- * @param  {number} threshold number between 0 and 1 eg 1,0.9,0.7 Nlp confidence score
+ * @param  {number} threshold numb
+ * number between 0 and 1 eg 1,0.9,0.7 Nlp confidence score
  * falls below treshold it will return intentNone
  
  */
@@ -29,6 +30,7 @@ return {respond:(phrase,fileName,threshold)=>respond(phrase,fileName,threshold).
         switch(state.task) {
             
             case "identifyIntent":
+            
             if((JSON.parse(data.srcAnswer).hasOwnProperty('text'))){
                     
                 

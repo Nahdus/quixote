@@ -1,0 +1,259 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "fullSearchWhenGuessed": false,
+    "useNlg": true,
+    "useNeural": true,
+    "useLRC": true
+  },
+  "languages": [
+    "en"
+  ],
+  "intentDomains": {
+    "balance": "default",
+    "day": "default"
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {}
+  },
+  "slotManager": {},
+  "classifiers": [
+    {
+      "language": "en",
+      "docs": [
+        {
+          "intent": "balance",
+          "utterance": [
+            "i",
+            "want",
+            "to",
+            "know",
+            "my",
+            "balanc"
+          ]
+        },
+        {
+          "intent": "balance",
+          "utterance": [
+            "what",
+            "is",
+            "my",
+            "balanc"
+          ]
+        },
+        {
+          "intent": "day",
+          "utterance": [
+            "what",
+            "day"
+          ]
+        }
+      ],
+      "features": {
+        "i": 1,
+        "want": 1,
+        "to": 1,
+        "know": 1,
+        "my": 2,
+        "balanc": 2,
+        "what": 2,
+        "is": 1,
+        "day": 1
+      },
+      "logistic": {
+        "observations": {
+          "balance": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            [
+              4,
+              5,
+              6,
+              7
+            ]
+          ],
+          "day": [
+            [
+              6,
+              8
+            ]
+          ]
+        },
+        "labels": [
+          "balance",
+          "day"
+        ],
+        "observationCount": 3,
+        "theta": [
+          {
+            "elements": [
+              0.6722957891148942,
+              0.6722957891148942,
+              0.6722957891148942,
+              0.6722957891148942,
+              2.4401945922042327,
+              2.4401945922042327,
+              -1.1628412462863027,
+              1.767898803089338,
+              -2.9307400493756406
+            ]
+          },
+          {
+            "elements": [
+              -0.6722957891148941,
+              -0.6722957891148941,
+              -0.6722957891148941,
+              -0.6722957891148941,
+              -2.440194592204234,
+              -2.440194592204234,
+              1.1628412462863025,
+              -1.767898803089339,
+              2.9307400493756397
+            ]
+          }
+        ]
+      },
+      "useLRC": true,
+      "useNeural": true,
+      "neuralClassifier": {
+        "settings": {
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "learningRate": 0.1,
+            "errorThresh": 0.0005,
+            "timeout": 60000
+          }
+        },
+        "classifierMap": {
+          "balance": {
+            "sizes": [
+              8,
+              1
+            ],
+            "layers": [
+              {
+                "i": {},
+                "want": {},
+                "to": {},
+                "know": {},
+                "my": {},
+                "balanc": {},
+                "what": {},
+                "is": {}
+              },
+              {
+                "0": {
+                  "bias": 4.76261568069458,
+                  "weights": {
+                    "i": 6.895949840545654,
+                    "want": 7.073500156402588,
+                    "to": 7.093865394592285,
+                    "know": 6.818404674530029,
+                    "my": 33.81206512451172,
+                    "balanc": 33.96194839477539,
+                    "what": -1.4280574321746826,
+                    "is": 26.99265480041504
+                  }
+                }
+              }
+            ],
+            "outputLookup": false,
+            "inputLookup": true,
+            "activation": "leaky-relu",
+            "trainOpts": {
+              "iterations": 20000,
+              "errorThresh": 0.0005,
+              "log": false,
+              "logPeriod": 10,
+              "learningRate": 0.1,
+              "momentum": 0.1,
+              "callbackPeriod": 10,
+              "timeout": 120000,
+              "beta1": 0.9,
+              "beta2": 0.999,
+              "epsilon": 1e-8
+            }
+          },
+          "day": {
+            "sizes": [
+              9,
+              1
+            ],
+            "layers": [
+              {
+                "i": {},
+                "want": {},
+                "to": {},
+                "know": {},
+                "my": {},
+                "balanc": {},
+                "what": {},
+                "is": {},
+                "day": {}
+              },
+              {
+                "0": {
+                  "bias": 24.20845603942871,
+                  "weights": {
+                    "i": -0.9016174077987671,
+                    "want": -1.0205974578857422,
+                    "to": -0.9558447599411011,
+                    "know": -0.8859207630157471,
+                    "my": -16.899173736572266,
+                    "balanc": -17.133228302001953,
+                    "what": 28.144765853881836,
+                    "is": -16.330656051635742,
+                    "day": 44.35215377807617
+                  }
+                }
+              }
+            ],
+            "outputLookup": false,
+            "inputLookup": true,
+            "activation": "leaky-relu",
+            "trainOpts": {
+              "iterations": 20000,
+              "errorThresh": 0.0005,
+              "log": false,
+              "logPeriod": 10,
+              "learningRate": 0.1,
+              "momentum": 0.1,
+              "callbackPeriod": 10,
+              "timeout": 60000,
+              "beta1": 0.9,
+              "beta2": 0.999,
+              "epsilon": 1e-8
+            }
+          }
+        }
+      }
+    }
+  ],
+  "responses": {}
+}
