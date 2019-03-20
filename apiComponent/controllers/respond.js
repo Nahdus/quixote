@@ -2,10 +2,11 @@
 const {chatter} = require('../../chatter')
 const { SimilarSearch } = require('node-nlp')
 const  {train} =require('../../trainer')
-const { NlpManager } = require('node-nlp');
-const manager = new NlpManager({ languages: ['en'] });
+const { NlpManager ,NerManager } = require('node-nlp');
+
 const fs = require('fs')
 const { Language } = require('node-nlp');
+let NERmanager = new NerManager({ threshold: 0.8 });
 //const bot =chatter("Sorry I couldnn't get you")
 exports.respond=async (req, res,next)=> {
    try{
@@ -21,6 +22,7 @@ exports.respond=async (req, res,next)=> {
 exports.process=async (req, res,next)=> {
    try{
     //const bot =chatter("Sorry I couldnn't get you")
+    const manager = new NlpManager({ languages: ['en'] });
        console.log(req.body)
        let response = await manager.process(req.body.query);
        res.send(response);
@@ -43,6 +45,7 @@ exports.getSimilarity=(req, res,next)=>{
 }
 exports.train=async (req, res,next)=>{
     try{
+        const manager = new NlpManager({ languages: ['en'] });
         console.log(req.body.intent,req.body.utterances)
         console.log(typeof req.body.utterances)
         req.body.utterances.forEach(element => {
@@ -85,6 +88,44 @@ exports.languageGuess=async(req, res,next)=>{
         const language = new Language()
         const guess = await language.guess(req.body.phrase)
         res.send(guess)
+    }catch(err){
+        next(err)
+    }
+}
+exports.handleEntity=async(req, res,next)=>{
+    try{
+        
+        switch (req.body.action) {
+            case 'addNamedEntity':
+            
+            try{
+                await NERmanager.addNamedEntityText(
+                req.body.entity,//'hero',
+                req.body.entityName,//'spiderman',
+                ['en'],
+                req.body.possiableSpellings//['Spiderman', 'Spider-man'],
+              );
+              
+              res.send('Entity added successfully')
+            }catch(err){
+                next(err)
+            }
+                break;
+            case 'findEntities':
+            try{
+                NERmanager.findEntities(
+                    req.body.phrase
+                  ).then(entities => {
+                    res.send(entities)
+                  })
+            }catch(err){
+                next(err)
+            }
+                break;
+            default:
+                break;
+        }
+        
     }catch(err){
         next(err)
     }

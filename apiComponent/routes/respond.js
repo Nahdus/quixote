@@ -10,6 +10,8 @@ router.post('/train',response.train)
 router.post('/identifyIntent',response.identifyIntent)
 router.post('/clear',response.clearTraining)
 router.post('/languageGuess',response.languageGuess)
+router.post('/handleEntity',response.handleEntity)
+
 
 
 module.exports=router
