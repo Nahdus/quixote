@@ -11,7 +11,9 @@
   "languages": [
     "en"
   ],
-  "intentDomains": {},
+  "intentDomains": {
+    "bye": "default"
+  },
   "nerManager": {
     "settings": {},
     "threshold": 0.8,
@@ -37,12 +39,45 @@
   "classifiers": [
     {
       "language": "en",
-      "docs": [],
-      "features": {},
+      "docs": [
+        {
+          "intent": "bye",
+          "utterance": [
+            "bye"
+          ]
+        },
+        {
+          "intent": "bye",
+          "utterance": [
+            "buby"
+          ]
+        }
+      ],
+      "features": {
+        "bye": 1,
+        "buby": 1
+      },
       "logistic": {
-        "observations": {},
-        "labels": [],
-        "observationCount": 0
+        "observations": {
+          "bye": [
+            [],
+            [
+              1
+            ]
+          ]
+        },
+        "labels": [
+          "bye"
+        ],
+        "observationCount": 2,
+        "theta": [
+          {
+            "elements": [
+              1.7986996723838882,
+              1.7986996723838882
+            ]
+          }
+        ]
       },
       "useLRC": true,
       "useNeural": true,
@@ -52,10 +87,49 @@
             "activation": "leaky-relu",
             "hiddenLayers": [],
             "learningRate": 0.1,
-            "errorThresh": 0.0005
+            "errorThresh": 0.0005,
+            "timeout": 120000
           }
         },
-        "classifierMap": {}
+        "classifierMap": {
+          "bye": {
+            "sizes": [
+              2,
+              1
+            ],
+            "layers": [
+              {
+                "bye": {},
+                "buby": {}
+              },
+              {
+                "0": {
+                  "bias": 62.90541458129883,
+                  "weights": {
+                    "bye": 34.9230842590332,
+                    "buby": 34.81012725830078
+                  }
+                }
+              }
+            ],
+            "outputLookup": false,
+            "inputLookup": true,
+            "activation": "leaky-relu",
+            "trainOpts": {
+              "iterations": 20000,
+              "errorThresh": 0.0005,
+              "log": false,
+              "logPeriod": 10,
+              "learningRate": 0.1,
+              "momentum": 0.1,
+              "callbackPeriod": 10,
+              "timeout": 120000,
+              "beta1": 0.9,
+              "beta2": 0.999,
+              "epsilon": 1e-8
+            }
+          }
+        }
       }
     }
   ],

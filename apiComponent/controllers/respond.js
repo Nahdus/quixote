@@ -9,6 +9,7 @@ const { Language } = require('node-nlp');
 let NERmanager = new NerManager({ threshold: 0.8 });
 //const bot =chatter("Sorry I couldnn't get you")
 const dclassify = require('dclassify')
+const manager = new NlpManager({ languages: ["en"] })
 exports.respond = async (req, res, next) => {
   try {
     const bot = chatter("Sorry I couldnn't get you");
@@ -128,6 +129,7 @@ exports.train = async (req, res, next) => {
     next(err);
   }
 };
+
 exports.identifyIntent = async (req, res, next) => {
   try {
     const manager = new NlpManager({
