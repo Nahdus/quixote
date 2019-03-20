@@ -11,7 +11,8 @@ router.post('/identifyIntent',response.identifyIntent)
 router.post('/clear',response.clearTraining)
 router.post('/languageGuess',response.languageGuess)
 router.post('/handleEntity',response.handleEntity)
-
+router.post('/analyseSentiment',response.analyseSentiment)
+router.post('/classify',response.classify)
 
 
 module.exports=router

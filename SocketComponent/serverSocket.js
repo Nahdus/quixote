@@ -15,7 +15,7 @@ io.on('connection',(socket)=>{
         bot.respond(message,"testLayeredServiceBot3.nlp",0.9)
     .then(data=>{
         console.log(data)
-        io.emit('response',data)})
+        socket.emit('response',data)})
         .catch(err=>console.log(err))
        
     
