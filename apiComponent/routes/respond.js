@@ -10,6 +10,7 @@ router.post('/train',response.train)
 router.post('/identifyIntent',response.identifyIntent)
 router.post('/clear',response.clearTraining)
 router.post('/languageGuess',response.languageGuess)
+router.post('/analyseSentiment',response.analyseSentiment)
 
 
 module.exports=router

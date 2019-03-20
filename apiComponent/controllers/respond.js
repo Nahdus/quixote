@@ -89,3 +89,14 @@ exports.languageGuess=async(req, res,next)=>{
         next(err)
     }
 }
+exports.analyseSentiment=async(req, res,next)=>{
+    try{
+        const sentiment = require('node-sentiment');
+        const senti = await sentiment(req.body.phrase,'en')
+        
+        
+        res.send(senti)
+    }catch(err){
+        next(err)
+    }
+}
