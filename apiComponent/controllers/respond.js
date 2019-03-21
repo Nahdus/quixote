@@ -40,10 +40,13 @@ exports.process = async (req, res, next) => {
 exports.getSimilarity=(req, res,next)=>{
     try{
     const similar = new SimilarSearch()
-    console.log(req.body.word1,req.body.word2)
-    let similarity=similar.getSimilarity(req.body.word1, req.body.word2);
-    console.log(similarity)
-    res.send('levenshtein distance '+similarity.toString())
+    wordDistance = req.body.words.map((word)=>{
+      console.log(word)
+      return (word,similar.getSimilarity(req.body.target,word));
+    })
+    
+    console.log(wordDistance)
+    res.send(wordDistance)
     
     }catch(err){
         next(err)
