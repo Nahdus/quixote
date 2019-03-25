@@ -10,7 +10,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\apiComponent\\controllers\\similarityChecker.js"
+            "program": "${workspaceFolder}\\apiComponent\\apiFront.js"
         }
     ]
 }

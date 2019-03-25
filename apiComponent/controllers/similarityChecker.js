@@ -1,10 +1,19 @@
 const { SimilarSearch } = require('node-nlp');
 var thesaurus = require('thesaurus-com');
+var tensify = require('tensify');
+ 
+// 'did'
 
 
  const fun = (search_word,sentence)=>{
     var thesaurus_words = thesaurus.search(search_word).synonyms;
     thesaurus_words.push(search_word);
+    thesaurus_words.forEach((word)=>{
+        thesaurus_words.push(tensify(word).past)
+        thesaurus_words.push(tensify(word).past_participle)
+    })
+    
+    //thesaurus_words.push(past_words);
     var newarr = new Array();
     const op={similarWord:[]}
     var split = sentence.split(" ");
@@ -33,7 +42,7 @@ var thesaurus = require('thesaurus-com');
 
 
 console.log(
- fun("hope"," trust hope on yourself")
+ fun("similar","show the related")
 
 )
 
@@ -41,44 +50,3 @@ console.log(
 
 
 
-//    readline.question(`Enter the word to be searched in your text\n`, (search_word) => {
-//    //console.log("Search word: ", search_word);
-//    var thesaurus_words = thesaurus.search(search_word).synonyms;
-//    thesaurus_words.push(search_word);
-//    var newarr = new Array();
-//    //console.log("Similar words : ", thesaurus_words );
-//    readline.question(`Enter the sentence for performing similarity check\n`, (sentence) => {
-//        console.log("Sentence: ", sentence);
-//        var split = sentence.split(" ");
-//        //console.log(split);
-
-//        for(var i=0;i<thesaurus_words.length;i++){
-//            for(var j=0;j<split.length;j++){
-//                var regex_thes = new RegExp(thesaurus_words[i]);
-//                //console.log(regex_thes);
-//                var res = regex_thes.test(split[j]);
-//                //console.log(res)
-//                if(res==true){
-//                    console.log("Similar word to "+search_word+ " is "+split[j] );
-//                    newarr.push(split[j]);
-//                }
-//                else{
-//                    const similar = new SimilarSearch({ normalize: true });
-//                    var val = similar.getSimilarity(thesaurus_words[i], split[j]);
-//                    if(val <2){
-//                        console.log("Almost similar word is", split[j]);
-//                        newarr.push(split[j]);
-//                    }
-
-//                }
-
-//            }
-//        }
-//     //    if(newarr.length==0){
-//     //        console.log("No similar words for "+search_word+" found");
-//     //    }
-//  })
-
-
-
-//  })

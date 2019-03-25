@@ -19,6 +19,7 @@
     "node-sentiment": "0.0.7",
     "request": "^2.88.0",
     "socket.io": "^2.2.0",
+    "tensify": "0.0.4",
     "thesaurus-com": "^1.2.1",
     "uuidv4": "^3.0.1"
   },
