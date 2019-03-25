@@ -12,7 +12,7 @@
     "en"
   ],
   "intentDomains": {
-    "bye": "default"
+    "hero": "default"
   },
   "nerManager": {
     "settings": {},
@@ -41,40 +41,29 @@
       "language": "en",
       "docs": [
         {
-          "intent": "bye",
+          "intent": "hero",
           "utterance": [
-            "bye"
-          ]
-        },
-        {
-          "intent": "bye",
-          "utterance": [
-            "buby"
+            "spiderman"
           ]
         }
       ],
       "features": {
-        "bye": 1,
-        "buby": 1
+        "spiderman": 1
       },
       "logistic": {
         "observations": {
-          "bye": [
-            [],
-            [
-              1
-            ]
+          "hero": [
+            []
           ]
         },
         "labels": [
-          "bye"
+          "hero"
         ],
-        "observationCount": 2,
+        "observationCount": 1,
         "theta": [
           {
             "elements": [
-              1.7986996723838882,
-              1.7986996723838882
+              2.779092882833007
             ]
           }
         ]
@@ -92,22 +81,20 @@
           }
         },
         "classifierMap": {
-          "bye": {
+          "hero": {
             "sizes": [
-              2,
+              1,
               1
             ],
             "layers": [
               {
-                "bye": {},
-                "buby": {}
+                "spiderman": {}
               },
               {
                 "0": {
-                  "bias": 62.90541458129883,
+                  "bias": 46.37879943847656,
                   "weights": {
-                    "bye": 34.9230842590332,
-                    "buby": 34.81012725830078
+                    "spiderman": 51.39390563964844
                   }
                 }
               }

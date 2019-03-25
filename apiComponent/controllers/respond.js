@@ -184,24 +184,41 @@ exports.analyseSentiment = async (req, res, next) => {
   }
 };
 exports.classify = async(req, res, next)=>{
-    try {
-        switch (res.body.action) {
-            case 'train':
-            var Classifier = dclassify.Classifier;
-            var DataSet    = dclassify.DataSet;
-            var Document   = dclassify.Document;
-
-                break;
-            case 'test':
-
-                break;
-            default:
-                break;
+  try {
+          let Classifier = dclassify.Classifier;
+          let DataSet    = dclassify.DataSet;
+          let Document   = dclassify.Document;
+          let data = new DataSet()
+          let options = {
+            applyInverse: true
+        };
+        console.log(req.body.action)
+        let classifier
+        if(req.body.action==="addDocument"){
+          console.log('hello')
+          classifier=new Classifier()
         }
-      } catch (err) {
-        next(err);
+          
+      switch (req.body.action) {
+          case 'addDocument':
+          data.add(req.body.categoryName, req.body.items.map((item)=>new Document(item.name,item.list)));
+          
+          
+          classifier.train(data)
+          res.send('added')
+
+              break;
+          case 'test':
+          
+          res.send(classifier.classify(new Document(req.body.name, req.body.list)))
+              break;
+          default:
+              break;
       }
+    } catch (err) {
+      next(err);
     }
+  }
 exports.similarityCheck = async (req, res, next) => {
   const Checksimilarity = (search_word,sentence)=>{
     var thesaurus_words = thesaurus.search(search_word).synonyms;
