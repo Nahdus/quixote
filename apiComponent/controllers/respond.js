@@ -3,7 +3,7 @@ const {chatter} = require('../../chatter')
 const { SimilarSearch } = require('node-nlp')
 const  {train} =require('../../trainer')
 const { NlpManager ,NerManager } = require('node-nlp');
-const thesaurus = require('thesaurus-com');
+const thesaurus = require('thesaurus');
 const fs = require('fs')
 const { Language } = require('node-nlp');
 let NERmanager = new NerManager({ threshold: 0.8 });
@@ -239,35 +239,20 @@ exports.classify = async(req, res, next)=>{
   }
 exports.similarityCheck = async (req, res, next) => {
   const Checksimilarity = (search_word,sentence)=>{
-    var thesaurus_words = thesaurus.search(search_word).synonyms;
-    thesaurus_words.push(search_word);
-    var newarr = new Array();
-    const op={similarWord:[]}
-    var split = sentence.split(" ");
-
-    for(var i=0;i<thesaurus_words.length;i++){
-        for(var j=0;j<split.length;j++){
-            var regex_thes = new RegExp(thesaurus_words[i]);
-            var res = regex_thes.test(split[j]);
-            //console.log(res)
-            if(res===true){
-                if(newarr.indexOf(split[j])=== -1){
-                    op.similarWord.push(split[j])
-                    newarr.push(split[j])
-                }
-            }
-        }
+    const regxMatcher=(word1,word2)=>{
+        const regex = new RegExp(word1)
+        return regex.test(word2)
     }
-    
-    if(op.similarWord.length==0){
-        // op.similarWord = null
-        //op.none = "No similar words found"
-        return op
-    }
-    return op
+    const returnmatchList=(words,word)=>words.find((eachWord)=>regxMatcher(eachWord,word))
+    const thesaurus_words = thesaurus.find(search_word);
+    thesaurus_words.push(search_word)
+    const TokenizedSentence=sentence.replace(/[^a-zA-Z ]/g, "").split(" ")
+    return {"similarWord":TokenizedSentence.map((eachWord)=>returnmatchList(thesaurus_words,eachWord)).filter((x)=>x)}
 }
         try {
-          res.send(Checksimilarity(req.body.word,req.body.sentence))
+          const words =Checksimilarity(req.body.word,req.body.sentence)
+          console.log(words)
+          res.send(words)
         } catch (err) {
           next(err);
         }
