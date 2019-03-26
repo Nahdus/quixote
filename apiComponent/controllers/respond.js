@@ -10,6 +10,7 @@ let NERmanager = new NerManager({ threshold: 0.8 });
 //const bot =chatter("Sorry I couldnn't get you")
 const dclassify = require('dclassify')
 const manager = new NlpManager({ languages: ["en"] })
+let DclassifyData
 exports.respond = async (req, res, next) => {
   try {
     const bot = chatter("Sorry I couldnn't get you");
@@ -188,34 +189,51 @@ exports.classify = async(req, res, next)=>{
           let Classifier = dclassify.Classifier;
           let DataSet    = dclassify.DataSet;
           let Document   = dclassify.Document;
+          
           let data = new DataSet()
           let options = {
             applyInverse: true
         };
         console.log(req.body.action)
-        let classifier
-        if(req.body.action==="addDocument"){
-          console.log('hello')
-          classifier=new Classifier()
-        }
+        let classifier=new Classifier(options)
+       
           
       switch (req.body.action) {
           case 'addDocument':
-          data.add(req.body.categoryName, req.body.items.map((item)=>new Document(item.name,item.list)));
+          const Items=req.body.items.map((item)=>{
+            return new Document(item.name,item.list)
+          })
+          console.log(Items)
+          if(!DclassifyData){
+
+            data.add(req.body.categoryName,Items);
+            console.log(data)
+            DclassifyData=data
+          }else{
+            DclassifyData.add(req.body.categoryName,Items)
+          }
           
+          console.log(DclassifyData)
           
-          classifier.train(data)
-          res.send('added')
+          res.send("done pa")
 
               break;
           case 'test':
-          
-          res.send(classifier.classify(new Document(req.body.name, req.body.list)))
+            
+            classifier.train(DclassifyData)
+            console.log("DclassifyData")
+            console.log(DclassifyData)
+            const test =new Document(req.body.name, req.body.list)
+            console.log("result")
+            const result=classifier.classify(test)
+            DclassifyData=undefined
+            res.send(result)
               break;
           default:
               break;
       }
     } catch (err) {
+      res.send("json is wrong")
       next(err);
     }
   }
