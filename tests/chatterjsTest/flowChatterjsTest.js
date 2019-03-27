@@ -28,11 +28,7 @@ describe("file:basicChattertest.js", () => {
     //expect(responseList).toContain(response);
   });
   it("it should return planExpiry intent response:/n when is my service scheme expiring", async () => {
-    let response = await bot.respond(
-      "when is my service scheme expiring",
-      nlpfile,
-      "0.9"
-    );
+    let response = await bot.respond("when is my service scheme expiring",nlpfile,"0.9");
     let responseList = ["sure please type your phone number"];
     expect(responseList).toContain(response);
   });
