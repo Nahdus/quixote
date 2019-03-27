@@ -18,14 +18,14 @@ const tainingFunction = async () =>{
     "what is my account balance"],//utterances
         [
             {
-            "get":["phoneNumber"],
+            "get":"phoneNumber",
             "text":["sure please type your phone number"],
-            "action":{"phoneNumber":{"ifGot":{"text":["Thanks for confirming"],
+            "action":{"ifGot":{"text":["Thanks for confirming"],
                        "post":{"url":"http://localhost:1234/phonebalance/balance","key":'phonenumber'} ,
                        "get":"identifyIntent"
-                    }},
-            "ifGotNot":{"phoneNumber":{"text":["I couldnt get your phone nummber could you type again?"],
-                        "get":"phoneNumber"}},
+                    },
+            "ifGotNot":{"text":["I couldnt get your phone nummber could you type again?"],
+                        "get":"phoneNumber"},
             }}
             ],//responses
             fileName//fileName
