@@ -18,31 +18,18 @@ const tainingFunction = async () =>{
     "what is my account balance"],//utterances
         [
             {
-            "get":"phoneNumber",
+            "get":["phoneNumber"],
             "text":["sure please type your phone number"],
-            "action":{"ifGot":{"text":["Thanks for confirming"],
+            "action":{"phoneNumber":{"ifGot":{"text":["Thanks for confirming"],
                        "post":{"url":"http://localhost:1234/phonebalance/balance","key":'phonenumber'} ,
                        "get":"identifyIntent"
-                    },
-            "ifGotNot":{"text":["I couldnt get your phone nummber could you type again?"],
-                        "get":"phoneNumber"},
+                    }},
+            "ifGotNot":{"phoneNumber":{"text":["I couldnt get your phone nummber could you type again?"],
+                        "get":"phoneNumber"}},
             }}
             ],//responses
             fileName//fileName
-        )
-    
-        // await train("phonenumberintent",//IntentName
-        // ["phone number"],//utterances
-        // [
-        //     {
-        //         "get":"identifyIntent",
-
-        //     }
-        // ],//responses
-        // fileName//fileName
-        // )
-}
-
+        )}
 if (require.main === module) {
     tainingFunction();
 }
