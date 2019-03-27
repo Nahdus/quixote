@@ -32,25 +32,15 @@ return {respond:(phrase,fileName,threshold)=>respond(phrase,fileName,threshold).
             case "identifyIntent":
             
             if((JSON.parse(data.srcAnswer).hasOwnProperty('text'))){
-                    
-                
-                    
                     if((JSON.parse(data.srcAnswer)).hasOwnProperty("get")){
-                        
                         state.task=(JSON.parse(data.srcAnswer)).get
-                        
                     }
                     if((JSON.parse(data.srcAnswer)).hasOwnProperty("action")){
                         action={...(JSON.parse(data.srcAnswer)).action}
-                       
                     }
-                    
-                    
                     return new Promise((resolve)=>resolve((JSON.parse(data.srcAnswer).text)[chooseRand(JSON.parse(data.srcAnswer).text)]))
                 }else if(data.intent==='None'){
-                    
                     if(defRes!==undefined){
-
                         return new Promise((resolve)=>resolve(defRes))
                     }
                     else{
@@ -61,23 +51,14 @@ return {respond:(phrase,fileName,threshold)=>respond(phrase,fileName,threshold).
                     console.log(data.intent)
                 }
                 break;
-                
-             
             case "phoneNumber":
-                
-                
                 if(data.entities.length>0)
                 {
                     data.entities.forEach(element => {
-                    
                     if(element.entity==="phonenumber"){
-                        
-                        memory.phoneNumber=element.resolution.value
+                       memory.phoneNumber=element.resolution.value
                     }
-                    
                 })}
-                
-               
                 if(memory.hasOwnProperty('phoneNumber')){
                     state.task=action.ifGot.get
                     let response =undefined
@@ -101,41 +82,27 @@ return {respond:(phrase,fileName,threshold)=>respond(phrase,fileName,threshold).
                 }
                 
             case "email":
-                
                 let response = undefined
                 if(data.entities.length>0)
                 {
                     data.entities.forEach(element => {
-                    
                     if(element.entity==="email"){
-                        
                         memory.email=element.resolution.value
                     }
-                    
                 })}
-                
-               
                 if(memory.hasOwnProperty('email')){
                     if (action.ifGot.hasOwnProperty('text')){
-                        
-                     return new Promise((resolve)=>resolve(action.ifGot.text[chooseRand(action.ifGot.text)]))
+                        return new Promise((resolve)=>resolve(action.ifGot.text[chooseRand(action.ifGot.text)]))
                     }
-                    
                 }else{
                     if (action.ifGotNot.hasOwnProperty('text')){
                         return new Promise((resolve)=>resolve(action.ifGotNot.text[chooseRand(action.ifGotNot.text)]))
                     }
-                    
                 }
-                
-                
             default:
                 return new Promise((resolve)=>resolve(null))
           }
-        
-        
     }
-    
     ).catch(err=>new Promise((_,reject)=>reject(err)))
 }}
 
