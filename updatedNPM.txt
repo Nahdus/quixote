@@ -1,0 +1,240 @@
+quixote@1.0.0 D:\quixote\quixote
+`-- node-nlp@3.6.0
+  +-- @microsoft/recognizers-text-suite@1.1.4
+  | +-- @microsoft/recognizers-text@1.1.4
+  | +-- @microsoft/recognizers-text-choice@1.1.4
+  | | +-- @microsoft/recognizers-text@1.1.4 deduped
+  | | `-- grapheme-splitter@1.0.4
+  | +-- @microsoft/recognizers-text-date-time@1.1.4
+  | | +-- @microsoft/recognizers-text@1.1.4 deduped
+  | | +-- @microsoft/recognizers-text-number@1.1.4 deduped
+  | | +-- @microsoft/recognizers-text-number-with-unit@1.1.4 deduped
+  | | +-- lodash.isequal@4.5.0
+  | | `-- lodash.tonumber@4.0.3
+  | +-- @microsoft/recognizers-text-number@1.1.4
+  | | +-- @microsoft/recognizers-text@1.1.4 deduped
+  | | +-- bignumber.js@7.2.1
+  | | +-- lodash.escaperegexp@4.1.2
+  | | +-- lodash.sortby@4.7.0
+  | | `-- lodash.trimend@4.5.1
+  | +-- @microsoft/recognizers-text-number-with-unit@1.1.4
+  | | +-- @microsoft/recognizers-text@1.1.4 deduped
+  | | +-- @microsoft/recognizers-text-number@1.1.4 deduped
+  | | +-- lodash.escaperegexp@4.1.2 deduped
+  | | +-- lodash.last@3.0.0
+  | | `-- lodash.max@4.0.1
+  | `-- @microsoft/recognizers-text-sequence@1.1.4
+  |   +-- @microsoft/recognizers-text@1.1.4 deduped
+  |   `-- grapheme-splitter@1.0.4 deduped
+  +-- escodegen@1.12.0
+  | +-- esprima@3.1.3
+  | +-- estraverse@4.3.0
+  | +-- esutils@2.0.3
+  | +-- optionator@0.8.2
+  | | +-- deep-is@0.1.3
+  | | +-- fast-levenshtein@2.0.6
+  | | +-- levn@0.3.0
+  | | | +-- prelude-ls@1.1.2 deduped
+  | | | `-- type-check@0.3.2 deduped
+  | | +-- prelude-ls@1.1.2
+  | | +-- type-check@0.3.2
+  | | | `-- prelude-ls@1.1.2 deduped
+  | | `-- wordwrap@1.0.0
+  | `-- source-map@0.6.1
+  +-- esprima@4.0.1
+  +-- kuromoji@0.1.2
+  | +-- async@2.6.3
+  | | `-- lodash@4.17.15
+  | +-- doublearray@0.0.2
+  | `-- zlibjs@0.3.1
+  +-- novel-segment@2.4.0
+  | +-- @bluelovers/fast-glob@3.0.4
+  | | +-- bluebird@3.5.5 deduped
+  | | `-- fast-glob@3.0.4
+  | |   +-- @nodelib/fs.stat@2.0.1
+  | |   +-- @nodelib/fs.walk@1.2.2
+  | |   | +-- @nodelib/fs.scandir@2.1.1
+  | |   | | +-- @nodelib/fs.stat@2.0.1 deduped
+  | |   | | `-- run-parallel@1.1.9
+  | |   | `-- fastq@1.6.0
+  | |   |   `-- reusify@1.0.4
+  | |   +-- glob-parent@5.0.0
+  | |   | `-- is-glob@4.0.1 deduped
+  | |   +-- is-glob@4.0.1
+  | |   | `-- is-extglob@2.1.1
+  | |   +-- merge2@1.2.4
+  | |   `-- micromatch@4.0.2
+  | |     +-- braces@3.0.2
+  | |     | `-- fill-range@7.0.1
+  | |     |   `-- to-regex-range@5.0.1
+  | |     |     `-- is-number@7.0.0 deduped
+  | |     `-- picomatch@2.0.7
+  | +-- @novel-segment/util@1.0.8
+  | +-- UNMET PEER DEPENDENCY @types/bluebird@*
+  | +-- UNMET PEER DEPENDENCY @types/node@*
+  | +-- array-hyper-unique@1.1.0
+  | | `-- deep-eql@4.0.0
+  | |   `-- type-detect@4.0.8
+  | +-- bluebird@3.5.5
+  | +-- cjk-conv@1.2.20
+  | | +-- UNMET PEER DEPENDENCY @types/bluebird@*
+  | | +-- UNMET PEER DEPENDENCY @types/node@*
+  | | +-- array-hyper-unique@1.1.0 deduped
+  | | +-- chinese_convert@1.0.8
+  | | +-- deepmerge-plus@2.1.3 deduped
+  | | +-- japanese@1.2.0
+  | | | +-- big.js@3.2.0
+  | | | +-- extend@3.0.2
+  | | | `-- meow@3.7.0
+  | | |   +-- camelcase-keys@2.1.0
+  | | |   | +-- camelcase@2.1.1
+  | | |   | `-- map-obj@1.0.1 deduped
+  | | |   +-- decamelize@1.2.0
+  | | |   +-- loud-rejection@1.6.0
+  | | |   | +-- currently-unhandled@0.4.1
+  | | |   | | `-- array-find-index@1.0.2
+  | | |   | `-- signal-exit@3.0.2
+  | | |   +-- map-obj@1.0.1
+  | | |   +-- minimist@1.2.0
+  | | |   +-- normalize-package-data@2.5.0
+  | | |   | +-- hosted-git-info@2.8.4
+  | | |   | +-- resolve@1.12.0
+  | | |   | | `-- path-parse@1.0.6
+  | | |   | +-- semver@5.7.1
+  | | |   | `-- validate-npm-package-license@3.0.4
+  | | |   |   +-- spdx-correct@3.1.0
+  | | |   |   | +-- spdx-expression-parse@3.0.0 deduped
+  | | |   |   | `-- spdx-license-ids@3.0.5
+  | | |   |   `-- spdx-expression-parse@3.0.0
+  | | |   |     +-- spdx-exceptions@2.2.0
+  | | |   |     `-- spdx-license-ids@3.0.5 deduped
+  | | |   +-- object-assign@4.1.1
+  | | |   +-- read-pkg-up@1.0.1
+  | | |   | +-- find-up@1.1.2
+  | | |   | | +-- path-exists@2.1.0
+  | | |   | | | `-- pinkie-promise@2.0.1 deduped
+  | | |   | | `-- pinkie-promise@2.0.1
+  | | |   | |   `-- pinkie@2.0.4
+  | | |   | `-- read-pkg@1.1.0
+  | | |   |   +-- load-json-file@1.1.0
+  | | |   |   | +-- graceful-fs@4.2.2 deduped
+  | | |   |   | +-- parse-json@2.2.0
+  | | |   |   | | `-- error-ex@1.3.2
+  | | |   |   | |   `-- is-arrayish@0.2.1
+  | | |   |   | +-- pify@2.3.0
+  | | |   |   | +-- pinkie-promise@2.0.1 deduped
+  | | |   |   | `-- strip-bom@2.0.0
+  | | |   |   |   `-- is-utf8@0.2.1
+  | | |   |   +-- normalize-package-data@2.5.0 deduped
+  | | |   |   `-- path-type@1.1.0
+  | | |   |     +-- graceful-fs@4.2.2 deduped
+  | | |   |     +-- pify@2.3.0 deduped
+  | | |   |     `-- pinkie-promise@2.0.1 deduped
+  | | |   +-- redent@1.0.0
+  | | |   | +-- indent-string@2.1.0
+  | | |   | | `-- repeating@2.0.1
+  | | |   | |   `-- is-finite@1.0.2
+  | | |   | |     `-- number-is-nan@1.0.1
+  | | |   | `-- strip-indent@1.0.1
+  | | |   |   `-- get-stdin@4.0.1
+  | | |   `-- trim-newlines@1.0.0
+  | | +-- regexp-helper@1.0.8
+  | | | +-- regexp-helper-core@1.0.7
+  | | | `-- regexp-support@1.0.25 deduped
+  | | +-- ts-type@1.2.9 deduped
+  | | `-- uni-string@1.1.2 deduped
+  | +-- core-decorators@0.20.0
+  | +-- crlf-normalize@1.0.3
+  | +-- deepmerge-plus@2.1.3
+  | | `-- is-mergeable-object@1.1.0
+  | +-- fs-extra@8.1.0
+  | | +-- graceful-fs@4.2.2
+  | | +-- jsonfile@4.0.0
+  | | | `-- graceful-fs@4.2.2 deduped
+  | | `-- universalify@0.1.2
+  | +-- hex-lib@1.0.2
+  | +-- lodash.clonedeep@4.5.0
+  | +-- regexp-cjk@3.3.8
+  | | +-- array-hyper-unique@1.1.0 deduped
+  | | +-- cjk-conv@1.2.20 deduped
+  | | +-- lodash@4.17.15 deduped
+  | | +-- regexp-helper@1.0.8 deduped
+  | | +-- regexp-parser-event@1.1.5
+  | | | +-- UNMET PEER DEPENDENCY @types/bluebird@*
+  | | | +-- UNMET PEER DEPENDENCY @types/node@*
+  | | | +-- array-hyper-unique@1.1.0 deduped
+  | | | +-- regexp-parser-literal@1.1.0 deduped
+  | | | +-- regexpp2@1.3.0
+  | | | `-- ts-type@1.2.9 deduped
+  | | +-- regexp-parser-literal@1.1.0
+  | | | +-- array-hyper-unique@1.1.0 deduped
+  | | | +-- emoji-regex@8.0.0
+  | | | +-- regexpp2@1.3.0 deduped
+  | | | `-- uni-string@1.1.2 deduped
+  | | +-- regexp-range@1.0.7
+  | | | +-- array-hyper-unique@1.1.0 deduped
+  | | | +-- fill-range@6.0.0
+  | | | | +-- is-number@7.0.0
+  | | | | `-- to-regex-range@4.0.3
+  | | | |   `-- is-number@7.0.0 deduped
+  | | | `-- japanese@1.2.0 deduped
+  | | `-- regexp-support@1.0.25
+  | |   `-- sort-object-keys2@1.1.0 deduped
+  | +-- segment-dict@2.3.6
+  | | +-- @bluelovers/fast-glob@3.0.4 deduped
+  | | +-- @novel-segment/util@1.0.8 deduped
+  | | +-- bluebird@3.5.5 deduped
+  | | +-- core-decorators@0.20.0 deduped
+  | | +-- crlf-normalize@1.0.3 deduped
+  | | +-- fast-glob@3.0.4 deduped
+  | | +-- fs-extra@8.1.0 deduped
+  | | +-- split2@3.1.1
+  | | | `-- readable-stream@3.4.0
+  | | |   +-- inherits@2.0.4
+  | | |   +-- string_decoder@1.3.0
+  | | |   | `-- safe-buffer@5.2.0
+  | | |   `-- util-deprecate@1.0.2
+  | | +-- stream-pipe@1.0.1
+  | | +-- through2@3.0.1
+  | | | `-- readable-stream@3.4.0 deduped
+  | | +-- uni-string@1.1.2 deduped
+  | | `-- upath2@2.1.3
+  | +-- sort-object-keys2@1.1.0
+  | +-- str-util@2.3.21
+  | | +-- chinese-parseint@1.1.0
+  | | +-- cjk-conv@1.2.20 deduped
+  | | +-- deepmerge@3.3.0
+  | | +-- is-fullwidth-code-point@3.0.0
+  | | +-- japanese@1.2.0 deduped
+  | | +-- strip-ansi@5.2.0
+  | | | `-- ansi-regex@4.1.0
+  | | `-- uni-string@1.1.2 deduped
+  | +-- string-natural-compare@2.0.3
+  | +-- ts-enum-util@4.0.1
+  | +-- ts-type@1.2.9
+  | | `-- typedarray-dts@1.0.0
+  | +-- UNMET PEER DEPENDENCY typescript@>= 2.9.1
+  | `-- uni-string@1.1.2
+  |   +-- es6-class-prototype@1.0.4
+  |   | `-- class-proxy@1.1.2
+  |   `-- runes2@0.4.7
+  `-- xlsx@0.15.1
+    +-- adler-32@1.2.0
+    | +-- exit-on-epipe@1.0.1 deduped
+    | `-- printj@1.1.2
+    +-- cfb@1.1.3
+    | +-- adler-32@1.2.0 deduped
+    | +-- commander@2.17.1 deduped
+    | +-- crc-32@1.2.0 deduped
+    | `-- printj@1.1.2 deduped
+    +-- codepage@1.14.0
+    | +-- commander@2.14.1
+    | `-- exit-on-epipe@1.0.1 deduped
+    +-- commander@2.17.1
+    +-- crc-32@1.2.0
+    | +-- exit-on-epipe@1.0.1 deduped
+    | `-- printj@1.1.2 deduped
+    +-- exit-on-epipe@1.0.1
+    `-- ssf@0.10.2
+      `-- frac@1.1.2
+
