@@ -11,7 +11,7 @@ module.exports = function(grunt) {
               //starts the api service
               cmd: 'node',
               args: [
-                'apiFront.js'
+                'apiComponent/apiFront.js'
               ]
             },
             tariningdata3:{
